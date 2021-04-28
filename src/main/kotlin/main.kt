@@ -1,31 +1,26 @@
 fun main() {
     //Lista de participantes
     val listaParticipantes = mutableListOf<Participante>()
-    var rellenar = 0
-    for(i in 0..5){
-        when (rellenar) {
-            0 -> {
-                val esgrimista = Esgrimista("Esgrimista n:$i")
+    for(i in 1..10){
+        when (i) {
+            in 1..3 -> {
+                val esgrimista = Esgrimista("Esgrimista${i}")
                 listaParticipantes.add(esgrimista)
-                rellenar++
             }
-            1 -> {
-                val corredor = Corredor("Corredor n:$i")
+            in 4..6 -> {
+                val corredor = Corredor("Corredor$i")
                 listaParticipantes.add(corredor)
-                rellenar++
             }
             else -> {
-                val nadador = Nadador("Nadador n:$i")
+                val nadador = Nadador("Nadador$i")
                 listaParticipantes.add(nadador)
-                rellenar = 0
             }
         }
     }
-
     listaParticipantes.forEach { println("${it.nombre} ${it.saludar()}, ${it.decirFrase()}") }
 }
 
-open class Participante(var nombre : String, var saludo :String, var frase: String){
+open class Participante(var nombre : String, private var saludo :String, private var frase: String){
     fun saludar() : String { return saludo }
     fun decirFrase() : String { return frase }
 }
